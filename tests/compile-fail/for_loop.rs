@@ -302,6 +302,9 @@ fn main() {
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in out_vec {
 
+    let array = [1, 2, 3];
+    for _v in array.into_iter() {} //~ERROR it is more idiomatic to loop over `&array`
+
     for _v in &vec { } // these are fine
     for _v in &mut vec { } // these are fine
 
