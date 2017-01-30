@@ -287,36 +287,39 @@ fn main() {
     }
 
     for _v in vec.iter() { }
-    //~^ ERROR it is more idiomatic to loop over `&vec`
+    //~^ ERROR it is more idiomatic to loop over references to containers instead of using explicit iteration methods
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &vec {
 
     for _v in vec.iter_mut() { }
-    //~^ ERROR it is more idiomatic to loop over `&mut vec`
+    //~^ ERROR it is more idiomatic to loop over references to containers instead of using explicit iteration methods
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &mut vec {
 
     let out_vec = vec![1,2,3];
     for _v in out_vec.into_iter() { }
-    //~^ ERROR it is more idiomatic to loop over `out_vec` instead of `out_vec.into_iter()`
+    //~^ ERROR it is more idiomatic to loop over containers instead of using explicit iteration methods
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in out_vec {
 
     let array = [1, 2, 3];
-    for _v in array.into_iter() {} //~ERROR it is more idiomatic to loop over `&array`
+    for _v in array.into_iter() {}
+    //~^ ERROR it is more idiomatic to loop over references to containers instead of using explicit iteration methods
+    //~| HELP to write this more concisely, try looping over
+    //~| SUGGESTION for _v in &array {
 
     for _v in &vec { } // these are fine
     for _v in &mut vec { } // these are fine
 
     for _v in [1, 2, 3].iter() { }
-    //~^ ERROR it is more idiomatic to loop over `&[
+    //~^ ERROR it is more idiomatic to loop over references to containers
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &[1, 2, 3] {
 
     for _v in (&mut [1, 2, 3]).iter() { } // no error
 
     for _v in [0; 32].iter() {}
-    //~^ ERROR it is more idiomatic to loop over `&[
+    //~^ ERROR it is more idiomatic to loop over references to containers
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &[0; 32] {
 
@@ -324,43 +327,43 @@ fn main() {
 
     let ll: LinkedList<()> = LinkedList::new();
     for _v in ll.iter() { }
-    //~^ ERROR it is more idiomatic to loop over `&ll`
+    //~^ ERROR it is more idiomatic to loop over references to containers
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &ll {
 
     let vd: VecDeque<()> = VecDeque::new();
     for _v in vd.iter() { }
-    //~^ ERROR it is more idiomatic to loop over `&vd`
+    //~^ ERROR it is more idiomatic to loop over references to containers
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &vd {
 
     let bh: BinaryHeap<()> = BinaryHeap::new();
     for _v in bh.iter() { }
-    //~^ ERROR it is more idiomatic to loop over `&bh`
+    //~^ ERROR it is more idiomatic to loop over references to containers
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &bh {
 
     let hm: HashMap<(), ()> = HashMap::new();
     for _v in hm.iter() { }
-    //~^ ERROR it is more idiomatic to loop over `&hm`
+    //~^ ERROR it is more idiomatic to loop over references to containers
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &hm {
 
     let bt: BTreeMap<(), ()> = BTreeMap::new();
     for _v in bt.iter() { }
-    //~^ ERROR it is more idiomatic to loop over `&bt`
+    //~^ ERROR it is more idiomatic to loop over references to containers
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &bt {
 
     let hs: HashSet<()> = HashSet::new();
     for _v in hs.iter() { }
-    //~^ ERROR it is more idiomatic to loop over `&hs`
+    //~^ ERROR it is more idiomatic to loop over references to containers
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &hs {
 
     let bs: BTreeSet<()> = BTreeSet::new();
     for _v in bs.iter() { }
-    //~^ ERROR it is more idiomatic to loop over `&bs`
+    //~^ ERROR it is more idiomatic to loop over references to containers
     //~| HELP to write this more concisely, try looping over
     //~| SUGGESTION for _v in &bs {
 
